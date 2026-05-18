@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <script>
       try {
-        var __cc = localStorage.getItem('cc-theme');
-        if (__cc === 'light' || __cc === 'dark') document.documentElement.dataset.theme = __cc;
+        var __cc = localStorage.getItem('cc-theme-preference');
+        document.documentElement.dataset.theme = __cc === 'light' || __cc === 'dark' ? __cc : 'dark';
       } catch (e) {}
     </script>
     <link rel="icon" type="image/png" href="/brand/customcar-logo-glow.png" />

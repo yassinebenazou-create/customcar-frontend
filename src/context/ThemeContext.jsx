@@ -8,7 +8,8 @@ import {
 } from 'react'
 
 /* eslint-disable react-refresh/only-export-components -- provider + hook pattern */
-const STORAGE_KEY = 'cc-theme'
+const STORAGE_KEY = 'cc-theme-preference'
+const LEGACY_STORAGE_KEY = 'cc-theme'
 
 const ThemeContext = createContext(null)
 
@@ -26,12 +27,13 @@ export function ThemeProvider({ children }) {
     if (typeof window === 'undefined') return 'dark'
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved === 'light' || saved === 'dark') return saved
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+    return 'dark'
   })
 
   useEffect(() => {
     applyTheme(theme)
     localStorage.setItem(STORAGE_KEY, theme)
+    localStorage.removeItem(LEGACY_STORAGE_KEY)
   }, [theme])
 
   const setTheme = useCallback((t) => {
