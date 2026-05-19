@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import ServiceIcon from '@/components/ServiceIcon.jsx'
 
-export default function ServiceCard({ service, index = 0 }) {
+export default function ServiceCard({ service, index = 0, onSelect }) {
   const isReprogrammation = service.slug === 'reprogrammation-moteur'
   const content = (
     <>
@@ -32,12 +31,13 @@ export default function ServiceCard({ service, index = 0 }) {
       className="text-center"
     >
       {isReprogrammation ? (
-        <Link
-          to="/services/reprogrammation-moteur"
-          className="group block rounded-3xl outline-none transition focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+        <button
+          type="button"
+          onClick={() => onSelect?.(service)}
+          className="group block w-full rounded-3xl outline-none transition focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4 focus-visible:ring-offset-white"
         >
           {content}
-        </Link>
+        </button>
       ) : (
         <div className="group">{content}</div>
       )}

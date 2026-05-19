@@ -5,7 +5,6 @@ import Contact from '@/pages/Contact.jsx'
 
 const Home = lazy(() => import('@/pages/Home.jsx'))
 const Services = lazy(() => import('@/pages/Services.jsx'))
-const ReprogrammationShowcase = lazy(() => import('@/pages/ReprogrammationShowcase.jsx'))
 const Portfolio = lazy(() => import('@/pages/Portfolio.jsx'))
 const About = lazy(() => import('@/pages/About.jsx'))
 
@@ -24,7 +23,6 @@ export default function App() {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="services" element={<Services />} />
-          <Route path="services/reprogrammation-moteur" element={<ReprogrammationShowcase />} />
           <Route path="services/:slug" element={<Navigate to="/services" replace />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="nos-travaux" element={<Navigate to="/portfolio" replace />} />
