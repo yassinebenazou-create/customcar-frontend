@@ -3,42 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Seo from '@/components/Seo.jsx'
 
-const modules = [
-  {
-    title: 'Launch Control',
-    image: '/services/tuning-icons/launch-control.png',
-  },
-  {
-    title: 'Pops & Bangs',
-    image: '/services/tuning-icons/pops-bangs.png',
-  },
-  {
-    title: 'No Lift Shift',
-    image: '/services/tuning-icons/no-lift-shift.png',
-  },
-  {
-    title: 'MultiMap',
-    image: '/services/tuning-icons/multimap.png',
-  },
-  {
-    title: 'Hard Rev Cut',
-    image: '/services/tuning-icons/hard-rev-cut.png',
-  },
-  {
-    title: 'Start/Stop OFF',
-    image: '/services/tuning-icons/start-stop-off.png',
-  },
-]
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 28, filter: 'blur(10px)' },
-  show: (index) => ({
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.58, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] },
-  }),
-}
+const tuningModulesImage = '/services/tuning-icons/lgs.png'
 
 export default function ReprogrammationShowcase() {
   return (
@@ -77,43 +42,26 @@ export default function ReprogrammationShowcase() {
           </div>
         </motion.div>
 
-        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {modules.map((module, index) => (
-            <motion.div
-              key={module.title}
-              custom={index}
-              variants={itemVariants}
-              initial="hidden"
-              animate="show"
-              className="group flex min-h-56 flex-col items-center justify-start text-center"
-            >
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                whileHover={{ y: -8, scale: 1.04 }}
-                transition={{
-                  y: {
-                    duration: 3.2 + index * 0.12,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  },
-                  scale: { duration: 0.25, ease: 'easeOut' },
-                }}
-                className="relative mx-auto flex h-36 w-36 items-center justify-center sm:h-40 sm:w-40 md:h-44 md:w-44"
-              >
-                <span className="absolute inset-3 rounded-full bg-brand-accent/10 blur-2xl transition duration-500 group-hover:bg-brand-accent/25" />
-                <img
-                  src={module.image}
-                  alt={module.title}
-                  className="relative h-full w-full object-contain drop-shadow-[0_0_22px_rgba(0,161,156,0.16)] transition duration-500 group-hover:drop-shadow-[0_0_36px_rgba(0,161,156,0.42)]"
-                  loading={index < 3 ? 'eager' : 'lazy'}
-                />
-              </motion.div>
-              <h2 className="mt-4 max-w-60 font-display text-xl font-semibold leading-tight text-white transition duration-300 group-hover:text-brand-accent sm:text-2xl">
-                {module.title}
-              </h2>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30, filter: 'blur(12px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 mx-auto mt-12 max-w-6xl"
+        >
+          <div className="pointer-events-none absolute -inset-x-10 top-10 h-40 bg-brand-accent/10 blur-[90px]" />
+          <motion.img
+            src={tuningModulesImage}
+            alt="Modules performance : Launch Control, Pops & Bangs, No Lift Shift, MultiMap, Hard Rev Cut, Start/Stop OFF"
+            className="relative mx-auto block w-full max-w-5xl object-contain drop-shadow-[0_0_45px_rgba(0,161,156,0.16)]"
+            loading="eager"
+            animate={{ y: [0, -8, 0] }}
+            whileHover={{ scale: 1.015 }}
+            transition={{
+              y: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
+              scale: { duration: 0.35, ease: 'easeOut' },
+            }}
+          />
+        </motion.div>
       </section>
     </>
   )
