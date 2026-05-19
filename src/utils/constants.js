@@ -10,12 +10,6 @@ export const BRAND = {
 export const BRAND_LOGO = '/brand/customcar-logo-nav.png'
 export const BRAND_LOGO_ALT = 'Custom Car'
 
-export const HERO_IMAGES = [
-  {
-    src: '/hero/garage-hero.png',
-    alt: 'Facade du garage CUSTOMCAR',
-  },
-]
 /** Ancienne vidéo de secours si aucune image n'est définie pour l'accueil. */
 export const HERO_VIDEO =
   import.meta.env.VITE_HERO_VIDEO_URL ||
