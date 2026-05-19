@@ -67,10 +67,10 @@ export default function Contact() {
         path="/contact"
       />
 
-      <section className="px-4 pb-12 pt-8 sm:px-5 md:px-8 md:pb-16 md:pt-10">
+      <section className="px-4 pb-10 pt-7 sm:px-5 md:px-8 md:pb-14 md:pt-10">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs uppercase tracking-[0.28em] text-brand-accent sm:tracking-[0.35em]">Contact</p>
-          <h1 className="mt-4 font-display text-4xl leading-tight text-brand-ink sm:text-5xl md:text-6xl">
+          <h1 className="mt-4 font-display text-[clamp(2.1rem,9vw,4rem)] leading-tight text-brand-ink">
             Parlons de votre voiture
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-brand-muted/90 sm:text-lg">
@@ -79,7 +79,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-5 px-4 pb-12 sm:px-5 md:grid-cols-3 md:gap-8 md:px-8 md:pb-16">
+      <section className="mx-auto grid max-w-7xl gap-4 px-4 pb-10 sm:px-5 md:grid-cols-3 md:gap-6 md:px-8 md:pb-14">
         <GlassCard glow className="space-y-3">
           <Phone className="h-5 w-5 text-brand-accent" />
           <p className="text-sm uppercase tracking-[0.25em] text-brand-muted/70">Téléphone</p>
@@ -104,7 +104,7 @@ export default function Contact() {
         </GlassCard>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-5 md:px-8 md:pb-16">
+      <section className="mx-auto max-w-7xl px-4 pb-10 sm:px-5 md:px-8 md:pb-14">
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="space-y-6">
             <h2 className="font-display text-3xl text-brand-ink">Horaires</h2>
@@ -138,13 +138,13 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-5 md:px-8 md:pb-24">
+      <section className="mx-auto max-w-5xl px-4 pb-14 sm:px-5 md:px-8 md:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 34, filter: 'blur(12px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.22 }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-visible rounded-[2rem] border border-brand-edge/15 bg-brand-panel/70 p-4 shadow-[0_24px_110px_rgba(0,0,0,0.42),0_0_70px_rgba(0,161,156,0.14)] backdrop-blur-2xl sm:p-6 md:p-8"
+          className="relative overflow-visible rounded-3xl border border-brand-edge/15 bg-brand-panel/70 p-4 shadow-[0_24px_90px_rgba(0,0,0,0.36),0_0_54px_rgba(0,161,156,0.12)] backdrop-blur-2xl sm:p-6 md:p-8"
         >
           <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_12%_0%,rgba(0,161,156,0.22),transparent_35%),radial-gradient(circle_at_92%_100%,rgba(198,198,198,0.1),transparent_34%)]" />
           <div className="pointer-events-none absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-accent to-transparent shadow-glow-sm" />
@@ -152,7 +152,7 @@ export default function Contact() {
           <div className="relative z-10">
             <div className="mb-6">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-accent">Message rapide</p>
-              <h2 className="mt-3 font-display text-3xl leading-tight text-brand-ink sm:text-4xl">Envoyez votre demande</h2>
+              <h2 className="mt-3 font-display text-2xl leading-tight text-brand-ink sm:text-3xl md:text-4xl">Envoyez votre demande</h2>
             </div>
 
             <form className="grid gap-4" onSubmit={send}>
@@ -160,7 +160,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={() => setTypeOpen((open) => !open)}
-                  className="flex w-full items-center justify-between border-b border-brand-accent/80 bg-brand-ink/[0.08] px-5 py-4 text-left text-lg text-brand-ink outline-none transition duration-300 hover:bg-brand-ink/[0.12] focus:border-brand-accent focus:shadow-[0_16px_48px_rgba(0,161,156,0.18)]"
+                  className="flex w-full items-center justify-between border-b border-brand-accent/80 bg-brand-ink/[0.08] px-4 py-3.5 text-left text-base text-brand-ink outline-none transition duration-300 hover:bg-brand-ink/[0.12] focus:border-brand-accent focus:shadow-[0_16px_48px_rgba(0,161,156,0.18)] sm:px-5 sm:py-4 sm:text-lg"
                 >
                   <span className={form.type ? 'text-brand-ink' : 'text-brand-muted/70'}>
                     {form.type || 'Sélectionnez un type...'}
@@ -184,7 +184,7 @@ export default function Contact() {
                           key={type}
                           type="button"
                           onClick={() => selectType(type)}
-                          className="block w-full px-5 py-3 text-left text-lg text-brand-ink transition duration-200 hover:bg-brand-accent/15 hover:text-brand-accent"
+                          className="block w-full px-4 py-3 text-left text-base text-brand-ink transition duration-200 hover:bg-brand-accent/15 hover:text-brand-accent sm:px-5 sm:text-lg"
                         >
                           {type}
                         </button>
@@ -198,7 +198,7 @@ export default function Contact() {
                 <input
                   required
                   placeholder="Titre du message"
-                  className="border-b border-brand-edge/40 bg-transparent px-5 py-4 text-lg text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted/70 focus:border-brand-accent focus:bg-brand-ink/[0.06]"
+                  className="border-b border-brand-edge/40 bg-transparent px-4 py-3.5 text-base text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted/70 focus:border-brand-accent focus:bg-brand-ink/[0.06] sm:px-5 sm:py-4 sm:text-lg"
                   value={form.title}
                   onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
                 />
@@ -206,7 +206,7 @@ export default function Contact() {
                   required
                   type="email"
                   placeholder="Email"
-                  className="border-b border-brand-edge/40 bg-transparent px-5 py-4 text-lg text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted/70 focus:border-brand-accent focus:bg-brand-ink/[0.06]"
+                  className="border-b border-brand-edge/40 bg-transparent px-4 py-3.5 text-base text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted/70 focus:border-brand-accent focus:bg-brand-ink/[0.06] sm:px-5 sm:py-4 sm:text-lg"
                   value={form.email}
                   onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 />
@@ -216,14 +216,14 @@ export default function Contact() {
                 required
                 rows={5}
                 placeholder="Message"
-                className="min-h-40 resize-y border-b border-brand-accent/80 bg-transparent px-5 py-4 text-lg text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted/70 focus:bg-brand-ink/[0.06]"
+                className="min-h-36 resize-y border-b border-brand-accent/80 bg-transparent px-4 py-3.5 text-base text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted/70 focus:bg-brand-ink/[0.06] sm:min-h-40 sm:px-5 sm:py-4 sm:text-lg"
                 value={form.message}
                 onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
               />
 
               <motion.button
                 type="submit"
-                className="mx-auto inline-flex min-w-56 items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-3.5 text-base font-semibold text-brand-black shadow-[0_18px_55px_rgba(0,161,156,0.28)] transition"
+                className="mx-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-3.5 text-base font-semibold text-brand-black shadow-[0_18px_55px_rgba(0,161,156,0.28)] transition sm:w-auto sm:min-w-56"
                 whileHover={{ scale: 1.03, boxShadow: '0 22px 70px rgba(0,161,156,0.36)' }}
                 whileTap={{ scale: 0.98 }}
               >

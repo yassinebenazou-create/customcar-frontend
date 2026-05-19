@@ -28,11 +28,11 @@ export default function Footer() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`
 
   return (
-    <footer className="mt-20 bg-[#333] px-4 py-12 text-white sm:px-5 md:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-3 md:gap-16">
+    <footer className="mt-10 bg-[#333] px-4 py-9 text-white sm:px-5 sm:py-10 md:mt-14 md:px-8 md:py-12">
+      <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-10">
         <div>
-          <h2 className="font-display text-2xl font-semibold text-brand-ink">Liens utiles</h2>
-          <nav className="mt-6 flex flex-col items-start gap-4 text-lg">
+          <h2 className="font-display text-xl font-semibold text-brand-ink sm:text-2xl">Liens utiles</h2>
+          <nav className="mt-4 flex flex-col items-start gap-2.5 text-base sm:text-lg">
             <Link className="underline underline-offset-4 transition hover:text-brand-accent" to="/services">
               Nos services
             </Link>
@@ -46,8 +46,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="font-display text-2xl font-semibold text-brand-ink">Horaires de travail</h2>
-          <div className="mt-6 space-y-1 text-lg leading-tight text-white">
+          <h2 className="font-display text-xl font-semibold text-brand-ink sm:text-2xl">Horaires de travail</h2>
+          <div className="mt-4 space-y-1 text-base leading-tight text-white sm:text-lg">
             {WORKING_HOURS.map((item) => (
               <p key={item.day}>
                 {item.day}: <span>{item.hours}</span>
@@ -55,7 +55,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="mt-10 flex items-center gap-5 text-brand-accent">
+          <div className="mt-7 flex items-center gap-4 text-brand-accent sm:gap-5">
             <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="transition hover:scale-110">
               <FaFacebook className="h-9 w-9 text-[#1877F2]" />
             </a>
@@ -69,8 +69,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="font-display text-2xl font-semibold text-brand-ink">Contact</h2>
-          <div className="mt-6 space-y-4 text-lg">
+          <h2 className="font-display text-xl font-semibold text-brand-ink sm:text-2xl">Contact</h2>
+          <div className="mt-4 space-y-3 text-base sm:text-lg">
             <a className="flex items-center gap-3 transition hover:text-brand-accent" href={`tel:${PHONE_TEL}`}>
               <Phone className="h-7 w-7 text-brand-accent" />
               {PHONE_DISPLAY}
@@ -85,7 +85,7 @@ export default function Footer() {
             href={MAP_DIRECTIONS_URL}
             target="_blank"
             rel="noreferrer"
-            className="mt-10 inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand-accent px-8 py-4 text-lg font-medium text-brand-black transition hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(0,161,156,0.35)]"
+            className="mt-7 inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand-accent px-6 py-3 text-base font-medium text-brand-black transition hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(0,161,156,0.35)] sm:text-lg"
           >
             <MapPin className="h-5 w-5" />
             Localisation
@@ -93,8 +93,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-5 text-center text-sm text-white/60">
-        © {new Date().getFullYear()} {BRAND.name}. Tous droits réservés.
+      <div className="mx-auto mt-9 max-w-7xl border-t border-white/10 pt-5 text-center text-sm text-white/60">
+        Copyright {new Date().getFullYear()} {BRAND.name}. Tous droits reserves.
       </div>
     </footer>
   )

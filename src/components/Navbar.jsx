@@ -47,16 +47,16 @@ export default function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'border-b border-brand-edge/50 bg-brand-panel/80 backdrop-blur-xl'
-          : 'bg-transparent'
+          : 'border-b border-brand-edge/20 bg-brand-black/82 backdrop-blur-xl'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 md:px-8 md:py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5 md:px-8 md:py-4">
         <Link to="/" className="group flex shrink-0 items-center gap-3">
           <span className="sr-only">{BRAND.name}</span>
           <BrandLogo size="md" />
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center gap-8 text-sm font-medium text-brand-muted lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-6 text-sm font-medium text-brand-muted lg:flex xl:gap-8">
           {links.map((l) => (
             <NavLink
               key={l.to}
@@ -80,15 +80,15 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2.5 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex xl:gap-2.5">
           <ThemeToggle />
           <a
             href={whatsappHref}
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex h-11 items-center gap-2 rounded-full border border-brand-accent/30 bg-gradient-to-r from-brand-accent/12 via-brand-ink/[0.05] to-brand-ink/[0.03] px-3 text-sm font-semibold text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_26px_rgba(0,161,156,0.1)] transition hover:border-brand-accent/70 hover:bg-brand-accent/15 hover:text-white hover:shadow-[0_0_28px_rgba(0,161,156,0.25)]"
+            className="group inline-flex h-10 items-center gap-2 rounded-full border border-brand-accent/30 bg-gradient-to-r from-brand-accent/12 via-brand-ink/[0.05] to-brand-ink/[0.03] px-2.5 text-sm font-semibold text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_26px_rgba(0,161,156,0.1)] transition hover:border-brand-accent/70 hover:bg-brand-accent/15 hover:text-white hover:shadow-[0_0_28px_rgba(0,161,156,0.25)] xl:h-11 xl:px-3"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_0_18px_rgba(37,211,102,0.34)] transition group-hover:scale-105">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_0_18px_rgba(37,211,102,0.34)] transition group-hover:scale-105">
               <WhatsAppMark className="h-4 w-4" />
             </span>
             <span className="leading-none lg:max-xl:hidden">
@@ -103,7 +103,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-edge/60 text-brand-ink lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-edge/60 text-brand-ink lg:hidden"
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
         >

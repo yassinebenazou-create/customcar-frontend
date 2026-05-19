@@ -30,10 +30,21 @@ html[data-theme='light'] {
 }
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html {
     color-scheme: dark;
     scroll-behavior: smooth;
     overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    background: var(--color-brand-bg);
   }
 
   body {
@@ -60,6 +71,7 @@ html[data-theme='light'] {
   canvas,
   svg {
     max-width: 100%;
+    display: block;
   }
 
   input,
@@ -134,6 +146,42 @@ html[data-theme='light'] .glass-panel {
   animation: brand-light-streak 8s ease-in-out infinite;
 }
 
+.hero-title-word {
+  background: linear-gradient(115deg, #ffffff 0%, #e8eeee 44%, #8ff7f3 58%, #ffffff 76%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 28px rgba(0, 0, 0, 0.58);
+  animation: hero-title-sheen 5.2s ease-in-out infinite;
+}
+
+@keyframes hero-title-sheen {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hero-soft-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.hero-soft-float {
+  animation: hero-soft-float 7s ease-in-out infinite;
+}
+
 .cinematic-hero-swiper {
   position: absolute !important;
   inset: 0;
@@ -171,6 +219,8 @@ html[data-theme='light'] .glass-panel {
 @media (prefers-reduced-motion: reduce) {
   .premium-logo-marquee,
   .brand-light-streak,
+  .hero-title-word,
+  .hero-soft-float,
   .cinematic-hero-slide.swiper-slide-active img {
     animation: none;
     transform: none;

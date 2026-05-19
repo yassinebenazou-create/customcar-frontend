@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import gsap from 'gsap'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -46,57 +45,52 @@ const heroSlides = [
 ]
 
 const titleVariants = {
-  hidden: { opacity: 0, y: 28, x: -12, filter: 'blur(14px)' },
+  hidden: { opacity: 0, y: 18, x: -8, filter: 'blur(12px)' },
   show: {
     opacity: 1,
     y: 0,
     x: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] },
   },
   exit: {
     opacity: 0,
-    y: -20,
-    x: 14,
+    y: -14,
+    x: 10,
     filter: 'blur(16px)',
     transition: { duration: 0.34, ease: [0.4, 0, 1, 1] },
+  },
+}
+
+const titleLineVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.08,
+    },
+  },
+}
+
+const titleWordVariants = {
+  hidden: { opacity: 0, y: 22, filter: 'blur(14px)', scale: 0.96 },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    scale: 1,
+    transition: { duration: 0.68, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
 export default function HeroPhotoSlideshow() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [swiper, setSwiper] = useState(null)
-  const ambientRef = useRef(null)
   const slide = heroSlides[activeIndex]
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to('.hero-glow-orb', {
-        x: 'random(-32, 32)',
-        y: 'random(-18, 18)',
-        scale: 'random(0.92, 1.12)',
-        opacity: 'random(0.42, 0.78)',
-        duration: 3.8,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        stagger: 0.28,
-      })
-
-      gsap.to('.hero-light-streak', {
-        xPercent: 120,
-        opacity: 0.95,
-        duration: 4.2,
-        repeat: -1,
-        ease: 'power2.inOut',
-      })
-    }, ambientRef)
-
-    return () => ctx.revert()
-  }, [])
+  const titleWords = slide.title.split(' ')
 
   return (
-    <div ref={ambientRef} className="absolute inset-0 overflow-hidden bg-[#050606]">
+    <div className="absolute inset-0 overflow-hidden bg-[#050606]">
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
@@ -115,6 +109,7 @@ export default function HeroPhotoSlideshow() {
               alt={item.title}
               className="h-full w-full object-cover"
               loading={index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
               draggable={false}
             />
           </SwiperSlide>
@@ -126,12 +121,12 @@ export default function HeroPhotoSlideshow() {
       <div className={`pointer-events-none absolute inset-0 z-10 bg-gradient-to-br ${slide.glow} opacity-65 mix-blend-screen blur-2xl`} />
       <div className="noise-overlay pointer-events-none absolute inset-0 z-20 opacity-40" />
 
-      <div className="hero-glow-orb pointer-events-none absolute left-[8%] top-[22%] z-20 h-44 w-44 rounded-full bg-cyan-400/20 blur-3xl" />
-      <div className="hero-glow-orb pointer-events-none absolute bottom-[16%] right-[10%] z-20 h-56 w-56 rounded-full bg-orange-500/18 blur-3xl" />
-      <div className="hero-glow-orb pointer-events-none absolute right-[34%] top-[12%] z-20 h-48 w-48 rounded-full bg-blue-500/16 blur-3xl" />
+      <div className="hero-glow-orb hero-soft-float pointer-events-none absolute left-[8%] top-[22%] z-20 h-32 w-32 rounded-full bg-cyan-400/20 blur-3xl sm:h-44 sm:w-44" />
+      <div className="hero-glow-orb hero-soft-float pointer-events-none absolute bottom-[16%] right-[10%] z-20 h-40 w-40 rounded-full bg-orange-500/18 blur-3xl [animation-delay:1s] sm:h-56 sm:w-56" />
+      <div className="hero-glow-orb hero-soft-float pointer-events-none absolute right-[34%] top-[12%] z-20 hidden h-48 w-48 rounded-full bg-blue-500/16 blur-3xl [animation-delay:2s] md:block" />
       <div className="hero-light-streak pointer-events-none absolute left-[-35%] top-[26%] z-20 h-px w-[45vw] rotate-[-12deg] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent opacity-0 shadow-[0_0_34px_rgba(34,211,238,0.7)]" />
 
-      <div className="relative z-30 mx-auto flex min-h-[calc(100svh-5rem)] w-full max-w-7xl items-center px-4 py-16 sm:px-5 md:px-8">
+      <div className="relative z-30 mx-auto flex min-h-[calc(100svh-4.5rem)] w-full max-w-7xl items-center px-4 py-12 sm:min-h-[calc(100svh-5rem)] sm:px-5 sm:py-14 md:px-8 md:py-16">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.title}
@@ -139,32 +134,42 @@ export default function HeroPhotoSlideshow() {
             initial="hidden"
             animate="show"
             exit="exit"
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
             <motion.div
               initial={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
               animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-2 text-xs font-bold uppercase tracking-widest text-cyan-200 shadow-[0_0_30px_rgba(0,161,156,0.16)] backdrop-blur-md"
+              className="inline-flex max-w-full items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-cyan-200 shadow-[0_0_30px_rgba(0,161,156,0.16)] backdrop-blur-md sm:px-3.5 sm:py-2 sm:text-xs sm:tracking-widest"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-orange-400 shadow-[0_0_18px_rgba(251,146,60,0.9)]" />
               {slide.label}
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 24, filter: 'blur(16px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.78, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 max-w-3xl font-display text-4xl font-semibold uppercase leading-tight text-white drop-shadow-[0_0_42px_rgba(0,0,0,0.75)] sm:text-5xl md:text-6xl lg:text-7xl"
+              variants={titleLineVariants}
+              initial="hidden"
+              animate="show"
+              aria-label={slide.title}
+              className="mt-4 max-w-[min(42rem,100%)] break-words font-display text-[clamp(1.55rem,8.4vw,2.7rem)] font-semibold uppercase leading-[1.02] tracking-[0.02em] text-white [text-wrap:balance] drop-shadow-[0_0_34px_rgba(0,0,0,0.72)] sm:mt-5 sm:text-[clamp(2.2rem,5.7vw,4.05rem)] md:max-w-3xl lg:text-[4.55rem] xl:text-[4.9rem]"
             >
-              {slide.title}
+              {titleWords.map((word, index) => (
+                <motion.span
+                  key={`${slide.title}-${word}-${index}`}
+                  variants={titleWordVariants}
+                  className="mr-[0.22em] inline-block will-change-transform"
+                  aria-hidden="true"
+                >
+                  <span className="hero-title-word inline-block">{word}</span>
+                </motion.span>
+              ))}
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 18, filter: 'blur(10px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.68, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 max-w-xl text-sm leading-6 text-white/78 sm:text-base md:text-lg"
+              className="mt-4 max-w-xl text-sm leading-6 text-white/78 sm:mt-5 sm:text-base md:text-lg"
             >
               {slide.subtitle}
             </motion.p>
@@ -173,10 +178,10 @@ export default function HeroPhotoSlideshow() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.68, delay: 0.36 }}
-              className="mt-7 flex max-w-lg items-center gap-3 rounded-2xl border border-white/12 bg-black/24 p-3 shadow-[0_24px_90px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl"
+              className="mt-6 flex max-w-full items-center gap-2 rounded-2xl border border-white/12 bg-black/24 p-3 shadow-[0_24px_90px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:mt-7 sm:max-w-lg sm:gap-3"
             >
               <span className="h-px flex-1 bg-gradient-to-r from-cyan-300/80 to-transparent" />
-              <span className="text-xs font-bold uppercase tracking-widest text-white/58">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.22em] text-white/58 sm:text-xs sm:tracking-widest">
                 CUSTOMCAR PERFORMANCE
               </span>
               <span className="h-px flex-1 bg-gradient-to-l from-orange-300/80 to-transparent" />
@@ -185,7 +190,7 @@ export default function HeroPhotoSlideshow() {
         </AnimatePresence>
       </div>
 
-      <div className="absolute bottom-6 left-4 right-4 z-40 mx-auto flex max-w-7xl items-center justify-between gap-4 sm:bottom-8 sm:px-1 md:px-5">
+      <div className="absolute bottom-5 left-4 right-4 z-40 mx-auto flex max-w-7xl items-center justify-between gap-4 sm:bottom-8 sm:px-1 md:px-5">
         <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/25 p-2 backdrop-blur-xl">
           {heroSlides.map((item, index) => (
             <button
@@ -206,7 +211,7 @@ export default function HeroPhotoSlideshow() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="hidden items-center gap-3 sm:flex">
           <button
             type="button"
             aria-label="Slide précédente"

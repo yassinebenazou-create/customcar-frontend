@@ -1,10 +1,10 @@
 import { BRAND_LOGO, BRAND_LOGO_ALT } from '@/utils/constants.js'
 
 const sizes = {
-  sm: 'h-10 md:h-12',
-  md: 'h-12 md:h-14',
-  lg: 'h-20 md:h-24',
-  xl: 'h-28 md:h-36',
+  sm: 'h-9 sm:h-10 md:h-12',
+  md: 'h-10 sm:h-12 md:h-14',
+  lg: 'h-16 sm:h-20 md:h-24',
+  xl: 'h-24 sm:h-28 md:h-36',
 }
 
 export default function BrandLogo({ size = 'md', className = '' }) {

@@ -1,36 +1,24 @@
-import { Suspense, lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import MainLayout from '@/layouts/MainLayout.jsx'
+import Home from '@/pages/Home.jsx'
+import Services from '@/pages/Services.jsx'
+import Portfolio from '@/pages/Portfolio.jsx'
+import About from '@/pages/About.jsx'
 import Contact from '@/pages/Contact.jsx'
-
-const Home = lazy(() => import('@/pages/Home.jsx'))
-const Services = lazy(() => import('@/pages/Services.jsx'))
-const Portfolio = lazy(() => import('@/pages/Portfolio.jsx'))
-const About = lazy(() => import('@/pages/About.jsx'))
 
 export default function App() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex min-h-screen items-center justify-center bg-brand-bg text-brand-muted">
-          <span className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-accent">
-            Chargement
-          </span>
-        </div>
-      }
-    >
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="services" element={<Services />} />
-          <Route path="services/:slug" element={<Navigate to="/services" replace />} />
-          <Route path="portfolio" element={<Portfolio />} />
-          <Route path="nos-travaux" element={<Navigate to="/portfolio" replace />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="services" element={<Services />} />
+        <Route path="services/:slug" element={<Navigate to="/services" replace />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="nos-travaux" element={<Navigate to="/portfolio" replace />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   )
 }

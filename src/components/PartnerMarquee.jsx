@@ -12,7 +12,7 @@ export default function PartnerMarquee({ compact = false }) {
   const marqueeBrands = [...BRANDS, ...BRANDS, ...BRANDS]
 
   const sectionSpace = compact
-    ? 'px-4 py-10 sm:px-5 md:px-8 md:py-14'
+    ? 'px-4 py-9 sm:px-5 md:px-8 md:py-12'
     : 'px-4 py-16 sm:px-5 md:px-8 md:py-28'
   const headingSpace = compact ? 'mx-auto mb-6 max-w-3xl text-center' : 'mx-auto mb-10 max-w-5xl text-center md:mb-14'
   const titleSize = compact
@@ -22,10 +22,10 @@ export default function PartnerMarquee({ compact = false }) {
     ? 'rounded-[1.5rem] px-0 py-5 md:rounded-[2rem] md:py-7'
     : 'rounded-[1.75rem] px-0 py-7 md:rounded-[2.25rem] md:py-10'
   const cardSize = compact
-    ? 'h-40 w-52 sm:h-48 sm:w-64 md:h-56 md:w-80'
+    ? 'h-32 w-44 sm:h-44 sm:w-60 md:h-52 md:w-72'
     : 'h-48 w-60 sm:h-60 sm:w-80 md:h-72 md:w-96'
   const logoSize = compact
-    ? 'h-24 max-h-24 w-36 sm:h-28 sm:max-h-28 sm:w-44 md:h-36 md:max-h-36 md:w-56'
+    ? 'h-20 max-h-20 w-32 sm:h-28 sm:max-h-28 sm:w-44 md:h-32 md:max-h-32 md:w-52'
     : 'h-28 max-h-28 w-44 sm:h-40 sm:max-h-40 sm:w-60 md:h-48 md:max-h-48 md:w-72'
 
   return (
