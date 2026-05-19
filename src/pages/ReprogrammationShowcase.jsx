@@ -77,7 +77,7 @@ export default function ReprogrammationShowcase() {
           </div>
         </motion.div>
 
-        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {modules.map((module, index) => (
             <motion.div
               key={module.title}
@@ -85,22 +85,30 @@ export default function ReprogrammationShowcase() {
               variants={itemVariants}
               initial="hidden"
               animate="show"
-              className="group text-center"
+              className="group flex min-h-56 flex-col items-center justify-start text-center"
             >
               <motion.div
-                animate={{ y: [0, -8, 0] }}
-                whileHover={{ y: -10, scale: 1.06 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="mx-auto flex h-44 w-44 items-center justify-center rounded-full sm:h-52 sm:w-52"
+                animate={{ y: [0, -6, 0] }}
+                whileHover={{ y: -8, scale: 1.04 }}
+                transition={{
+                  y: {
+                    duration: 3.2 + index * 0.12,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  },
+                  scale: { duration: 0.25, ease: 'easeOut' },
+                }}
+                className="relative mx-auto flex h-36 w-36 items-center justify-center sm:h-40 sm:w-40 md:h-44 md:w-44"
               >
+                <span className="absolute inset-3 rounded-full bg-brand-accent/10 blur-2xl transition duration-500 group-hover:bg-brand-accent/25" />
                 <img
                   src={module.image}
                   alt={module.title}
-                  className="h-full w-full rounded-full object-cover drop-shadow-[0_0_28px_rgba(0,161,156,0.22)] transition duration-500 group-hover:drop-shadow-[0_0_48px_rgba(0,161,156,0.55)]"
+                  className="relative h-full w-full object-contain drop-shadow-[0_0_22px_rgba(0,161,156,0.16)] transition duration-500 group-hover:drop-shadow-[0_0_36px_rgba(0,161,156,0.42)]"
                   loading={index < 3 ? 'eager' : 'lazy'}
                 />
               </motion.div>
-              <h2 className="mt-5 font-display text-2xl font-semibold leading-tight text-white transition duration-300 group-hover:text-brand-accent sm:text-3xl">
+              <h2 className="mt-4 max-w-60 font-display text-xl font-semibold leading-tight text-white transition duration-300 group-hover:text-brand-accent sm:text-2xl">
                 {module.title}
               </h2>
             </motion.div>

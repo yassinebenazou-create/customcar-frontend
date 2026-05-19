@@ -25,15 +25,23 @@ function applyTheme(theme) {
 export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState(() => {
     if (typeof window === 'undefined') return 'dark'
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'light' || saved === 'dark') return saved
+    try {
+      const saved = window.localStorage?.getItem(STORAGE_KEY)
+      if (saved === 'light' || saved === 'dark') return saved
+    } catch {
+      // Storage can be unavailable in strict/private browser modes.
+    }
     return 'dark'
   })
 
   useEffect(() => {
     applyTheme(theme)
-    localStorage.setItem(STORAGE_KEY, theme)
-    localStorage.removeItem(LEGACY_STORAGE_KEY)
+    try {
+      window.localStorage?.setItem(STORAGE_KEY, theme)
+      window.localStorage?.removeItem(LEGACY_STORAGE_KEY)
+    } catch {
+      // Theme is still applied through the DOM dataset.
+    }
   }, [theme])
 
   const setTheme = useCallback((t) => {
