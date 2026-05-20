@@ -199,8 +199,15 @@ html[data-theme='light'] .glass-panel {
 }
 
 .cinematic-hero-slide img {
+  object-position: var(--hero-mobile-position, center center);
   transform: scale(1.03);
   filter: saturate(1.06) contrast(1.08);
+}
+
+@media (min-width: 640px) {
+  .cinematic-hero-slide img {
+    object-position: var(--hero-position, center center);
+  }
 }
 
 .cinematic-hero-slide.swiper-slide-active img {

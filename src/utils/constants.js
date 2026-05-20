@@ -62,7 +62,7 @@ export const BRANDS = [
 ]
 
 export const WORKING_HOURS = [
-  { day: 'Lun - Ven', hours: '10:30 - 18:30' },
-  { day: 'Samedi', hours: '11:00 - 18:00' },
+  { day: 'Lun - Ven', hours: '9:00 ~ 18:00' },
+  { day: 'Samedi', hours: '9:00 ~ 16:00' },
   { day: 'Dimanche', hours: 'Sur rendez-vous' },
 ]
