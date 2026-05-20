@@ -29,7 +29,7 @@ export default function Services() {
         path="/services"
       />
 
-      <section className="relative overflow-hidden bg-white px-4 pb-9 pt-9 sm:px-5 md:px-8 md:pb-12 md:pt-12">
+      <section className="relative overflow-hidden bg-white px-4 pb-6 pt-6 sm:px-5 sm:pb-9 sm:pt-9 md:px-8 md:pb-12 md:pt-12">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-60"
@@ -39,18 +39,18 @@ export default function Services() {
           }}
         />
         <div className="relative mx-auto max-w-7xl text-center">
-          <p className="text-xs uppercase tracking-[0.28em] text-brand-accent sm:tracking-[0.45em]">
+          <p className="text-[0.62rem] uppercase tracking-[0.24em] text-brand-accent sm:text-xs sm:tracking-[0.45em]">
             CUSTOMCAR
           </p>
-          <h1 className="mt-3 font-display text-[clamp(2.3rem,10vw,4rem)] leading-tight text-neutral-950">
+          <h1 className="mt-2 font-display text-[clamp(1.9rem,9vw,4rem)] leading-[1.02] text-neutral-950 sm:mt-3">
             Services
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-neutral-600 sm:text-base md:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-[0.82rem] leading-5 text-neutral-600 sm:mt-4 sm:text-base sm:leading-6 md:text-lg">
             Une sélection claire de prestations premium, présentées simplement pour aller vite vers le bon service.
           </p>
           <a
             href={`tel:${PHONE_TEL}`}
-            className="mt-6 inline-flex items-center justify-center gap-2 text-sm font-semibold text-brand-accent hover:text-neutral-950"
+            className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-brand-accent hover:text-neutral-950 sm:mt-6"
           >
             <Phone className="h-4 w-4" />
             {PHONE_DISPLAY}
@@ -58,29 +58,29 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="bg-white px-4 pb-14 sm:px-5 md:px-8 md:pb-20">
+      <section className="bg-white px-4 pb-9 sm:px-5 sm:pb-14 md:px-8 md:pb-20">
         {selectedService?.slug === 'reprogrammation-moteur' ? (
           <motion.div
             ref={showcaseRef}
             initial={{ opacity: 0, y: 26, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto mb-12 max-w-6xl overflow-hidden rounded-3xl border border-brand-accent/20 bg-brand-black p-4 text-white shadow-[0_0_52px_rgba(0,161,156,0.16)] sm:p-6 md:p-8"
+            className="relative mx-auto mb-8 max-w-6xl overflow-hidden rounded-2xl border border-brand-accent/20 bg-brand-black p-3 text-white shadow-[0_0_52px_rgba(0,161,156,0.16)] sm:mb-12 sm:rounded-3xl sm:p-6 md:p-8"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(0,161,156,0.2),transparent_34%),radial-gradient(circle_at_82%_22%,rgba(198,198,198,0.1),transparent_36%)]" />
             <div className="relative z-10 flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.38em] text-brand-accent">
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-brand-accent sm:text-xs sm:tracking-[0.38em]">
                   ECU Performance
                 </p>
-                <h2 className="mt-3 font-display text-xl font-semibold leading-tight text-white sm:text-3xl md:text-4xl">
+                <h2 className="mt-2 font-display text-lg font-semibold leading-tight text-white sm:mt-3 sm:text-3xl md:text-4xl">
                   Reprogrammation Moteur
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedService(null)}
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/70 transition hover:border-brand-accent hover:text-brand-accent"
+                className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/70 transition hover:border-brand-accent hover:text-brand-accent sm:h-10 sm:w-10"
                 aria-label="Fermer"
               >
                 <X className="h-5 w-5" />
@@ -90,7 +90,7 @@ export default function Services() {
             <motion.img
               src={REPROGRAMMATION_SHOWCASE_IMAGE}
               alt="Modules performance : Launch Control, Pops & Bangs, No Lift Shift, MultiMap, Hard Rev Cut, Start/Stop OFF"
-              className="relative z-10 mx-auto mt-5 block w-full max-w-5xl object-contain drop-shadow-[0_0_36px_rgba(0,161,156,0.2)] sm:mt-6"
+              className="relative z-10 mx-auto mt-3 block w-full max-w-5xl object-contain drop-shadow-[0_0_36px_rgba(0,161,156,0.2)] sm:mt-6"
               loading="eager"
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
@@ -98,7 +98,7 @@ export default function Services() {
           </motion.div>
         ) : null}
 
-        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-12">
+        <div className="mx-auto grid max-w-7xl gap-x-6 gap-y-7 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3 xl:gap-x-12">
           {SERVICES.map((service, index) => (
             <ServiceCard
               key={service.slug}
@@ -110,21 +110,21 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 pb-14 pt-6 sm:px-5 md:px-8 md:pb-20">
+      <section className="mx-auto max-w-5xl px-4 pb-9 pt-2 sm:px-5 sm:pb-14 sm:pt-6 md:px-8 md:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-3xl border border-brand-edge/10 bg-gradient-to-br from-brand-ink/[0.06] to-transparent p-5 text-center sm:p-8 md:p-12"
+          className="rounded-2xl border border-brand-edge/10 bg-gradient-to-br from-brand-ink/[0.06] to-transparent p-4 text-center sm:rounded-3xl sm:p-8 md:p-12"
         >
-          <h2 className="font-display text-xl leading-tight text-brand-ink sm:text-3xl md:text-4xl">
+          <h2 className="font-display text-lg leading-tight text-brand-ink sm:text-3xl md:text-4xl">
             Avez-vous besoin de l&apos;un de nos services ?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-brand-muted/85">
+          <p className="mx-auto mt-2 max-w-xl text-[0.82rem] leading-5 text-brand-muted/85 sm:mt-3 sm:text-sm">
             Contactez-nous par téléphone ou envoyez un message : on vous répond rapidement avec une orientation claire.
           </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          <div className="mt-5 flex flex-col justify-center gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
             <MagneticButton href="/contact" className="bg-brand-accent text-brand-black">
               Contactez-nous
             </MagneticButton>

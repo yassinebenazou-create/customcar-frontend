@@ -10,7 +10,7 @@ export default function MagneticButton({
   ...rest
 }) {
   const { ref, style, onMove, onLeave } = useMagnetic(0.25)
-  const cls = `relative inline-flex max-w-full items-center justify-center overflow-hidden rounded-full px-6 py-3 text-center text-sm font-semibold leading-tight tracking-wide transition-shadow duration-300 sm:px-8 ${className}`
+  const cls = `relative inline-flex max-w-full items-center justify-center overflow-hidden rounded-full px-5 py-2.5 text-center text-[0.82rem] font-semibold leading-tight tracking-wide transition-shadow duration-300 sm:px-8 sm:py-3 sm:text-sm ${className}`
 
   const shine = (
     <motion.span

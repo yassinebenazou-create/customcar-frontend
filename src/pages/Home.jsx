@@ -14,11 +14,11 @@ export default function Home() {
         path="/"
       />
 
-      <section className="relative min-h-[calc(100svh-4.5rem)] overflow-hidden bg-brand-black sm:min-h-[calc(100svh-5rem)]">
+      <section className="relative min-h-[62svh] overflow-hidden bg-brand-black sm:min-h-[68svh] lg:min-h-[calc(100svh-6rem)]">
         <HeroPhotoSlideshow />
       </section>
 
-      <section className="relative overflow-hidden border-y border-brand-edge/10 bg-brand-black px-4 py-14 sm:px-5 md:min-h-[24rem] md:px-8 md:py-20">
+      <section className="relative overflow-hidden border-y border-brand-edge/10 bg-brand-black px-4 py-8 sm:px-5 sm:py-10 md:min-h-[24rem] md:px-8 md:py-20">
         <video
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.78]"
           src="/videos/customcar-gears-bg.mp4"
@@ -41,10 +41,10 @@ export default function Home() {
           viewport={{ once: true, margin: '-80px' }}
           className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center"
         >
-          <h2 className="font-display text-[clamp(1.9rem,7vw,3.8rem)] leading-tight text-brand-ink drop-shadow-[0_0_34px_rgba(0,0,0,0.65)]">
+          <h2 className="font-display text-[clamp(1.45rem,6vw,3.8rem)] leading-[1.05] text-brand-ink drop-shadow-[0_0_34px_rgba(0,0,0,0.65)]">
             En savoir plus sur <span className="text-brand-accent">CUSTOM</span>CAR
           </h2>
-          <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5">
+          <div className="mt-5 flex w-full flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-5">
             <MagneticButton
               href="/services"
               className="w-full justify-center bg-brand-accent text-brand-black shadow-[0_0_45px_rgba(0,161,156,0.5)] hover:shadow-[0_0_90px_rgba(0,161,156,0.65)] sm:w-64"
@@ -63,7 +63,7 @@ export default function Home() {
 
       <PartnerMarquee compact />
 
-      <section className="relative overflow-hidden bg-[#333] px-4 py-12 text-center sm:px-5 md:px-8 md:py-16">
+      <section className="relative overflow-hidden bg-[#333] px-4 py-8 text-center sm:px-5 sm:py-10 md:px-8 md:py-16">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,161,156,0.16),transparent_38%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
         <motion.div
@@ -73,12 +73,12 @@ export default function Home() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-10 mx-auto flex max-w-4xl flex-col items-center"
         >
-          <h2 className="font-display text-[clamp(1.85rem,7vw,3.4rem)] font-semibold leading-tight text-white">
+          <h2 className="font-display text-[clamp(1.55rem,6vw,3.4rem)] font-semibold leading-[1.05] text-white">
             Êtes-vous intéressés par nos services?
           </h2>
           <MagneticButton
             href="/contact"
-            className="mt-8 w-full justify-center bg-brand-accent text-brand-black shadow-[0_0_40px_rgba(0,161,156,0.35)] hover:shadow-[0_0_75px_rgba(0,161,156,0.5)] sm:w-72"
+            className="mt-5 w-full justify-center bg-brand-accent text-brand-black shadow-[0_0_40px_rgba(0,161,156,0.35)] hover:shadow-[0_0_75px_rgba(0,161,156,0.5)] sm:mt-8 sm:w-72"
           >
             Contactez-nous
           </MagneticButton>

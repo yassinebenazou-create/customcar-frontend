@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import BrandLogo from '@/components/BrandLogo.jsx'
 import ThemeToggle from '@/components/ThemeToggle.jsx'
 import { BRAND, PHONE_DISPLAY, WHATSAPP_NUMBER } from '@/utils/constants.js'
@@ -25,15 +24,8 @@ function WhatsAppMark({ className = '' }) {
 }
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- close drawer on navigation
-    setOpen(false)
-  }, [location.pathname])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -46,23 +38,25 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'border-b border-brand-edge/50 bg-brand-panel/80 backdrop-blur-xl'
-          : 'border-b border-brand-edge/20 bg-brand-black/82 backdrop-blur-xl'
+          ? 'border-b border-brand-edge/50 bg-brand-panel/82 backdrop-blur-xl'
+          : 'border-b border-brand-edge/20 bg-brand-black/86 backdrop-blur-xl'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5 md:px-8 md:py-4">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-3 gap-y-1 px-3 py-2 sm:gap-y-2 sm:px-5 md:px-8 lg:flex-nowrap lg:py-4">
         <Link to="/" className="group flex shrink-0 items-center gap-3">
           <span className="sr-only">{BRAND.name}</span>
-          <BrandLogo size="md" />
+          <BrandLogo size="sm" className="h-8 sm:h-10 md:h-14" />
         </Link>
 
-        <nav className="hidden flex-1 items-center justify-center gap-6 text-sm font-medium text-brand-muted lg:flex xl:gap-8">
+        <nav className="order-3 -mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 pb-0.5 text-[0.64rem] font-semibold text-brand-muted [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-3 sm:text-xs md:gap-5 md:text-sm lg:order-none lg:mx-0 lg:w-auto lg:flex-1 lg:justify-center lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 xl:gap-8">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `relative transition hover:text-brand-ink ${isActive ? 'text-brand-ink' : ''}`
+                `relative shrink-0 rounded-full px-2 py-1.5 transition hover:text-brand-ink sm:px-3 sm:py-2 lg:rounded-none lg:px-0 lg:py-0 ${
+                  isActive ? 'text-brand-ink' : ''
+                }`
               }
             >
               {({ isActive }) => (
@@ -71,7 +65,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="navline"
-                      className="absolute -bottom-2 left-0 h-0.5 w-full bg-brand-accent shadow-[0_0_16px_rgba(0,161,156,0.65)]"
+                      className="absolute bottom-0.5 left-2 right-2 h-0.5 bg-brand-accent shadow-[0_0_16px_rgba(0,161,156,0.65)] sm:bottom-1 sm:left-3 sm:right-3 lg:-bottom-2 lg:left-0 lg:right-0"
                     />
                   )}
                 </>
@@ -80,77 +74,25 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex xl:gap-2.5">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 xl:gap-2.5">
           <ThemeToggle />
           <a
             href={whatsappHref}
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex h-10 items-center gap-2 rounded-full border border-brand-accent/30 bg-gradient-to-r from-brand-accent/12 via-brand-ink/[0.05] to-brand-ink/[0.03] px-2.5 text-sm font-semibold text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_26px_rgba(0,161,156,0.1)] transition hover:border-brand-accent/70 hover:bg-brand-accent/15 hover:text-white hover:shadow-[0_0_28px_rgba(0,161,156,0.25)] xl:h-11 xl:px-3"
+            className="group inline-flex h-8 items-center gap-1.5 rounded-full border border-brand-accent/30 bg-gradient-to-r from-brand-accent/12 via-brand-ink/[0.05] to-brand-ink/[0.03] px-2 text-xs font-semibold text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_26px_rgba(0,161,156,0.1)] transition hover:border-brand-accent/70 hover:bg-brand-accent/15 hover:text-white hover:shadow-[0_0_28px_rgba(0,161,156,0.25)] sm:h-10 sm:gap-2 sm:px-2.5 xl:h-11 xl:px-3"
           >
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_0_18px_rgba(37,211,102,0.34)] transition group-hover:scale-105">
-              <WhatsAppMark className="h-4 w-4" />
+            <span className="flex h-[1.375rem] w-[1.375rem] shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_0_18px_rgba(37,211,102,0.34)] transition group-hover:scale-105 sm:h-7 sm:w-7">
+              <WhatsAppMark className="h-3 w-3 sm:h-4 sm:w-4" />
             </span>
-            <span className="leading-none lg:max-xl:hidden">
+            <span className="hidden leading-none sm:block lg:max-xl:hidden">
               <span className="block text-[9px] uppercase tracking-[0.18em] text-brand-accent/90">WhatsApp</span>
-              <span className="block text-[13px]">{PHONE_DISPLAY}</span>
+              <span className="block text-[11px] sm:text-[13px]">{PHONE_DISPLAY}</span>
             </span>
-            <span className="hidden text-[13px] leading-none xl:hidden">
-              {PHONE_DISPLAY}
-            </span>
+            <span className="hidden text-[13px] leading-none xl:hidden">{PHONE_DISPLAY}</span>
           </a>
         </div>
-
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-edge/60 text-brand-ink lg:hidden"
-          aria-label="Menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
       </div>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="max-h-[calc(100svh-4.75rem)] overflow-y-auto border-t border-brand-edge/50 bg-brand-panel/95 backdrop-blur-2xl lg:hidden"
-          >
-            <div className="flex flex-col gap-1 px-4 py-4 sm:px-5">
-              {links.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className="rounded-xl px-3 py-3 text-lg text-brand-ink/90 hover:bg-brand-ink/[0.06]"
-                >
-                  {l.label}
-                </Link>
-              ))}
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-xl px-3 py-3 text-lg text-brand-accent hover:bg-brand-ink/[0.06]"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white">
-                  <WhatsAppMark className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-xs uppercase tracking-[0.2em] text-brand-muted">WhatsApp</span>
-                  {PHONE_DISPLAY}
-                </span>
-              </a>
-              <div className="flex items-center gap-3 px-3 py-2">
-                <span className="text-xs uppercase tracking-[0.2em] text-brand-muted">Thème</span>
-                <ThemeToggle />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   )
 }

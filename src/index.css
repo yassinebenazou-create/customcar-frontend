@@ -200,8 +200,10 @@ html[data-theme='light'] .glass-panel {
 
 .cinematic-hero-slide img {
   object-position: var(--hero-mobile-position, center center);
-  transform: scale(1.03);
-  filter: saturate(1.06) contrast(1.08);
+  image-rendering: auto;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 @media (min-width: 640px) {
@@ -216,10 +218,21 @@ html[data-theme='light'] .glass-panel {
 
 @keyframes cinematic-hero-zoom {
   from {
-    transform: scale(1.03);
+    transform: translateZ(0) scale(1);
   }
   to {
-    transform: scale(1.12);
+    transform: translateZ(0) scale(1.018);
+  }
+}
+
+@media (min-width: 640px) {
+  @keyframes cinematic-hero-zoom {
+    from {
+      transform: translateZ(0) scale(1);
+    }
+    to {
+      transform: translateZ(0) scale(1.035);
+    }
   }
 }
 

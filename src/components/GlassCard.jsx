@@ -8,7 +8,7 @@ export default function GlassCard({ children, className = '', glow = false, reve
       whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, amount: 0.22, margin: '0px 0px -80px 0px' }}
       transition={{ duration: 0.7, delay: revealDelay, ease: [0.22, 1, 0.36, 1] }}
-      className={`glass-panel group relative overflow-hidden rounded-2xl p-6 transition duration-500 hover:border-brand-accent/45 hover:shadow-[0_0_0_1px_rgba(0,161,156,0.22),0_22px_75px_rgba(0,0,0,0.42),0_0_58px_rgba(0,161,156,0.18)] ${className}`}
+      className={`glass-panel group relative overflow-hidden rounded-2xl p-4 transition duration-500 hover:border-brand-accent/45 hover:shadow-[0_0_0_1px_rgba(0,161,156,0.22),0_22px_75px_rgba(0,0,0,0.42),0_0_58px_rgba(0,161,156,0.18)] sm:p-6 ${className}`}
       whileHover={{
         boxShadow: glow
           ? '0 0 0 1px color-mix(in srgb, #00a19c 48%, transparent), 0 24px 90px color-mix(in srgb, #111111 68%, transparent), 0 0 70px color-mix(in srgb, #00a19c 22%, transparent)'
