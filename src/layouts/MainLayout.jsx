@@ -17,7 +17,7 @@ export default function MainLayout() {
     <div className="min-h-screen overflow-x-hidden bg-brand-bg text-brand-muted">
       <ScrollProgress />
       <Navbar />
-      <main className="overflow-x-hidden pt-[5.25rem] sm:pt-[6.25rem] lg:pt-24">
+      <main className="overflow-x-hidden pt-[4.9rem] sm:pt-[6.25rem] lg:pt-24">
         {outlet}
       </main>
       <Footer />

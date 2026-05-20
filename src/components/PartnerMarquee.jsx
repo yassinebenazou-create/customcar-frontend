@@ -12,20 +12,20 @@ export default function PartnerMarquee({ compact = false }) {
   const marqueeBrands = [...BRANDS, ...BRANDS, ...BRANDS]
 
   const sectionSpace = compact
-    ? 'px-4 py-7 sm:px-5 sm:py-9 md:px-8 md:py-12'
+    ? 'px-4 py-5 sm:px-5 sm:py-9 md:px-8 md:py-12'
     : 'px-4 py-16 sm:px-5 md:px-8 md:py-28'
-  const headingSpace = compact ? 'mx-auto mb-4 max-w-3xl text-center sm:mb-6' : 'mx-auto mb-10 max-w-5xl text-center md:mb-14'
+  const headingSpace = compact ? 'mx-auto mb-3 max-w-3xl text-center sm:mb-6' : 'mx-auto mb-10 max-w-5xl text-center md:mb-14'
   const titleSize = compact
-    ? 'mt-2 font-display text-xl leading-tight text-brand-silver sm:mt-3 sm:text-3xl md:text-4xl'
+    ? 'mt-1.5 font-display text-lg leading-tight text-brand-silver sm:mt-3 sm:text-3xl md:text-4xl'
     : 'mt-4 font-display text-3xl leading-tight text-brand-silver sm:text-5xl md:text-7xl'
   const shellSpace = compact
-    ? 'rounded-[1.25rem] px-0 py-3 sm:rounded-[1.5rem] sm:py-5 md:rounded-[2rem] md:py-7'
+    ? 'rounded-[1.25rem] px-0 py-2 sm:rounded-[1.5rem] sm:py-5 md:rounded-[2rem] md:py-7'
     : 'rounded-[1.75rem] px-0 py-7 md:rounded-[2.25rem] md:py-10'
   const cardSize = compact
-    ? 'h-24 w-[8.5rem] sm:h-44 sm:w-60 md:h-52 md:w-72'
+    ? 'h-20 w-[8rem] sm:h-44 sm:w-60 md:h-52 md:w-72'
     : 'h-48 w-60 sm:h-60 sm:w-80 md:h-72 md:w-96'
   const logoSize = compact
-    ? 'h-14 max-h-14 w-24 sm:h-28 sm:max-h-28 sm:w-44 md:h-32 md:max-h-32 md:w-52'
+    ? 'h-12 max-h-12 w-[5.5rem] sm:h-28 sm:max-h-28 sm:w-44 md:h-32 md:max-h-32 md:w-52'
     : 'h-28 max-h-28 w-44 sm:h-40 sm:max-h-40 sm:w-60 md:h-48 md:max-h-48 md:w-72'
 
   return (

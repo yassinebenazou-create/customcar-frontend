@@ -14,11 +14,11 @@ export default function Home() {
         path="/"
       />
 
-      <section className="relative min-h-[62svh] overflow-hidden bg-brand-black sm:min-h-[68svh] lg:min-h-[calc(100svh-6rem)]">
+      <section className="relative min-h-[54svh] overflow-hidden bg-brand-black sm:min-h-[68svh] lg:min-h-[calc(100svh-6rem)]">
         <HeroPhotoSlideshow />
       </section>
 
-      <section className="relative overflow-hidden border-y border-brand-edge/10 bg-brand-black px-4 py-8 sm:px-5 sm:py-10 md:min-h-[24rem] md:px-8 md:py-20">
+      <section className="relative overflow-hidden border-y border-brand-edge/10 bg-brand-black px-4 py-6 sm:px-5 sm:py-10 md:min-h-[24rem] md:px-8 md:py-20">
         <video
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.78]"
           src="/videos/customcar-gears-bg.mp4"
@@ -44,16 +44,16 @@ export default function Home() {
           <h2 className="font-display text-[clamp(1.45rem,6vw,3.8rem)] leading-[1.05] text-brand-ink drop-shadow-[0_0_34px_rgba(0,0,0,0.65)]">
             En savoir plus sur <span className="text-brand-accent">CUSTOM</span>CAR
           </h2>
-          <div className="mt-5 flex w-full flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-5">
+          <div className="mt-4 flex w-full max-w-xl items-center justify-center gap-2 sm:mt-8 sm:gap-5">
             <MagneticButton
               href="/services"
-              className="w-full justify-center bg-brand-accent text-brand-black shadow-[0_0_45px_rgba(0,161,156,0.5)] hover:shadow-[0_0_90px_rgba(0,161,156,0.65)] sm:w-64"
+              className="min-w-0 flex-1 justify-center bg-brand-accent text-brand-black shadow-[0_0_45px_rgba(0,161,156,0.5)] hover:shadow-[0_0_90px_rgba(0,161,156,0.65)] sm:w-64 sm:flex-none"
             >
               Nos Services
             </MagneticButton>
             <MagneticButton
               href="/portfolio"
-              className="w-full justify-center border border-white/12 bg-white/[0.08] text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl hover:border-brand-accent hover:bg-brand-accent/10 sm:w-64"
+              className="min-w-0 flex-1 justify-center border border-white/12 bg-white/[0.08] text-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl hover:border-brand-accent hover:bg-brand-accent/10 sm:w-64 sm:flex-none"
             >
               Nos Travaux
             </MagneticButton>
@@ -63,7 +63,7 @@ export default function Home() {
 
       <PartnerMarquee compact />
 
-      <section className="relative overflow-hidden bg-[#333] px-4 py-8 text-center sm:px-5 sm:py-10 md:px-8 md:py-16">
+      <section className="relative overflow-hidden bg-[#333] px-4 py-6 text-center sm:px-5 sm:py-10 md:px-8 md:py-16">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,161,156,0.16),transparent_38%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
         <motion.div

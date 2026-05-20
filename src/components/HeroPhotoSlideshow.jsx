@@ -139,7 +139,7 @@ export default function HeroPhotoSlideshow() {
       <div className="hero-glow-orb hero-soft-float pointer-events-none absolute right-[34%] top-[12%] z-20 hidden h-48 w-48 rounded-full bg-blue-500/16 blur-3xl [animation-delay:2s] md:block" />
       <div className="hero-light-streak pointer-events-none absolute left-[-35%] top-[26%] z-20 h-px w-[45vw] rotate-[-12deg] bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent opacity-0 shadow-[0_0_34px_rgba(34,211,238,0.7)]" />
 
-      <div className="relative z-30 mx-auto flex min-h-[62svh] w-full max-w-7xl items-end px-5 pb-16 pt-10 sm:min-h-[68svh] sm:items-center sm:px-5 sm:py-14 md:px-8 md:py-16 lg:min-h-[calc(100svh-6rem)]">
+      <div className="relative z-30 mx-auto flex min-h-[54svh] w-full max-w-7xl items-end px-5 pb-12 pt-8 sm:min-h-[68svh] sm:items-center sm:px-5 sm:py-14 md:px-8 md:py-16 lg:min-h-[calc(100svh-6rem)]">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.title}
@@ -164,7 +164,7 @@ export default function HeroPhotoSlideshow() {
               initial="hidden"
               animate="show"
               aria-label={slide.title}
-              className="mt-3 max-w-[min(35rem,100%)] break-words font-display text-[clamp(1.85rem,9.6vw,3rem)] font-semibold uppercase leading-[0.94] tracking-[0.01em] text-white [text-wrap:balance] drop-shadow-[0_8px_36px_rgba(0,0,0,0.8)] sm:mt-5 sm:text-[clamp(2.2rem,5.7vw,4.05rem)] md:max-w-3xl lg:text-[4.55rem] xl:text-[4.9rem]"
+              className="mt-2.5 max-w-[min(35rem,100%)] break-words font-display text-[clamp(1.65rem,8.4vw,2.6rem)] font-semibold uppercase leading-[0.94] tracking-[0.01em] text-white [text-wrap:balance] drop-shadow-[0_8px_36px_rgba(0,0,0,0.8)] sm:mt-5 sm:text-[clamp(2.2rem,5.7vw,4.05rem)] md:max-w-3xl lg:text-[4.55rem] xl:text-[4.9rem]"
             >
               {titleWords.map((word, index) => (
                 <motion.span
@@ -182,7 +182,7 @@ export default function HeroPhotoSlideshow() {
               initial={{ opacity: 0, y: 18, filter: 'blur(10px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.68, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-3 max-w-md text-[0.84rem] leading-5 text-white/82 drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)] sm:mt-5 sm:max-w-xl sm:text-base sm:leading-6 md:text-lg"
+              className="mt-2 max-w-md text-[0.78rem] leading-5 text-white/82 drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)] sm:mt-5 sm:max-w-xl sm:text-base sm:leading-6 md:text-lg"
             >
               {slide.subtitle}
             </motion.p>
@@ -191,7 +191,7 @@ export default function HeroPhotoSlideshow() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.68, delay: 0.36 }}
-              className="mt-5 flex max-w-md items-center gap-3 sm:mt-7 sm:max-w-lg"
+              className="mt-4 flex max-w-md items-center gap-2.5 sm:mt-7 sm:max-w-lg sm:gap-3"
             >
               <span className="h-px w-14 bg-gradient-to-r from-cyan-300 to-transparent shadow-[0_0_18px_rgba(34,211,238,0.7)] sm:w-24" />
               <span className="text-[0.56rem] font-bold uppercase tracking-[0.2em] text-white/58 drop-shadow-[0_4px_16px_rgba(0,0,0,0.75)] sm:text-xs sm:tracking-widest">
@@ -203,7 +203,7 @@ export default function HeroPhotoSlideshow() {
         </AnimatePresence>
       </div>
 
-      <div className="absolute bottom-3 left-4 right-16 z-40 mx-auto flex max-w-7xl items-center justify-between gap-2 sm:bottom-8 sm:right-4 sm:gap-3 sm:px-1 md:px-5">
+      <div className="absolute bottom-2.5 left-4 right-14 z-40 mx-auto flex max-w-7xl items-center justify-between gap-2 sm:bottom-8 sm:right-4 sm:gap-3 sm:px-1 md:px-5">
         <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/30 p-1.5 shadow-[0_16px_50px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:gap-2 sm:p-2">
           {heroSlides.map((item, index) => (
             <button
